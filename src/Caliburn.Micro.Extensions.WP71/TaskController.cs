@@ -131,7 +131,11 @@
             request = null;
 
             if(isResurrecting) {
+#if WP71
+                TaskEx.Delay(500)
+#else
                 Task.Delay(500)
+#endif
                     .ContinueWith(t => {
                         events.PublishOnUIThread(message);
                         isResurrecting = false;

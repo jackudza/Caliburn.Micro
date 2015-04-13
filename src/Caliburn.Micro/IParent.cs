@@ -19,7 +19,11 @@
     /// Interface used to define a specialized parent.
     /// </summary>
     /// <typeparam name="T">The type of children.</typeparam>
+#if WP71
+    public interface IParent<T> : IParent {
+#else
     public interface IParent<out T> : IParent {
+#endif
         /// <summary>
         ///   Gets the children.
         /// </summary>
